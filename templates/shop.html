@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0; /* Solid background color */
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            margin-top: 450px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px; /* Increased padding for better spacing */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 500px; /* Increased width to accommodate longer form fields */
+            max-width: 100%; /* Ensure it is responsive */
+            display: flex;
+            flex-direction: column; /* Arrange items vertically */
+            align-items: stretch; /* Make inputs stretch to full width */
+            min-height: 500px; /* Set a minimum height for the form */
+        }
+
+        label {
+            font-size: 1.2em;
+            color: #333;
+            margin: 15px 0 5px; /* Adjusted margin for better spacing */
+            text-align: left; /* Align labels to the left */
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px; /* Margin for spacing */
+            border: 2px solid #007BFF;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box; /* Include padding in width */
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #ffffff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%; /* Full width button */
+        }
+
+        button:hover {
+            background-color: #06b300; /* Change color on hover */
+        }
+    </style>
+</head>
+<body>
+    <form action="/loginapp/shopapp/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="shopname">Shopname:</label>
+        <input type="text" id="shopname" name="shopname" required>
+
+        <label for="owner">Owner:</label>
+        <input type="text" id="owner" name="owner" required>
+
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" required>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required>
+
+        <label for="phoneno">Phoneno:</label>
+        <input type="text" id="phoneno" name="phoneno" required>
+
+        <label for="openingtime">Openingtime:</label>
+        <input type="text" id="openingtime" name="openingtime" required>
+
+        <label for="closingtime">Closingtime:</label>
+        <input type="text" id="closingtime" name="closingtime" required>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

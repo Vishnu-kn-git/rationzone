@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Table</title>
+    <style>
+    
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 18px;
+            text-align: left;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>customerTable</h2>
+
+    <table>
+        <tr>
+            <th>id</th>
+            <th>Usernname</th>
+            <th>Userid</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Address</th>
+            
+        </tr>
+        {% for i in x %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ i.username }}</td>
+            <td>{{ i.userid }}</td>
+            <td>{{ i.phone }}</td>
+            <td>{{ i.email }}</td>
+            <td>{{ i.address }}</td>
+            <td class="actions">
+                <a href="/loginapp/customeredit/{{ i.id }}">edit</a> | 
+                <a href="/loginapp/customerdelete/{{ i.id }}">delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

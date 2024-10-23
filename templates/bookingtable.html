@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Table</title>
+    <style>
+    
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 18px;
+            text-align: left;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Booking Table</h2>
+
+    <table>
+        <tr>
+            <th>id</th>
+            <th>Name</th>
+            <th>Loginid</th>
+            <th>Bookingdate</th>
+            <th>Bookingtime</th>
+            <th>Products</th>
+            <th>Deliverystatus</th>
+            
+        </tr>
+        {% for i in x %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ i.name }}</td>
+            <td>{{ i.loginid }}</td>
+            <td>{{ i.bookingdate }}</td>
+            <td>{{ i.bookingtime }}</td>
+            <td>{{ i.products }}</td>
+            <td>{{ i.deliverystatus }}</td>
+            <td class="actions">
+                <a href="/loginapp/bookingedit/{{ i.id }}">edit</a> | 
+                <a href="/loginapp/bookingdelete/{{ i.id }}">delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
