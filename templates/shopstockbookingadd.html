@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Form</title>
+    <style>
+        /* Global Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #74b9ff, #00cec9);
+            color: #2d3436;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Form Container */
+        form {
+            background-color: #ffffff;
+            margin-top: 200px;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Form Header */
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007BFF;
+        }
+
+        /* Labels */
+        label {
+            font-size: 1.1em;
+            margin: 10px 0 5px;
+        }
+
+        /* Input Fields */
+        input[type="text"],
+        input[type="date"],
+        input[type="time"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #dfe6e9;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box;
+            background-color: #f9f9f9;
+        }
+
+        /* Focused Input */
+        input:focus {
+            outline: none;
+            border-color: #007BFF;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+        }
+
+        /* Submit Button */
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Hover Effect for Button */
+        button:hover {
+            background-color: #06b300;
+        }
+
+        /* Form Footer */
+        .form-footer {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #636e72;
+        }
+
+        .form-footer a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <form action="/app/shopstockbookingadd/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2>Add Booking</h2>
+        <label for="product">Product</label>
+        <input type="text" id="product" name="product" placeholder="Enter product name" required>
+
+        <label for="quantity">Quantity</label>
+        <input type="text" id="quantity" name="quantity" placeholder="Enter quantity" required>
+
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="time">Time</label>
+        <input type="time" id="time" name="time" required>
+
+        <button type="submit">Submit</button>
+
+        <div class="form-footer">
+            <p><a href="/app/shopstockbookingtable/">Back to Booking</a></p>
+        </div>
+    </form>
+</body>
+</html>

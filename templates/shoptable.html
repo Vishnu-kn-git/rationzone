@@ -3,58 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop Table</title>
+    <title>Ration Shop Owners Details</title>
     <style>
-    
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #fff;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
         table {
-            width: 50%;
+            width: 80%;
+            max-width: 1200px;
             border-collapse: collapse;
             margin: 25px 0;
-            font-size: 18px;
-            text-align: left;
+            font-size: 16px;
+            background-color: #fff;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
         }
+
         th, td {
-            padding: 12px;
+            padding: 12px 15px;
             border: 1px solid #ddd;
+            text-align: center;
         }
+
         th {
-            background-color: #f2f2f2;
+            background-color: #4caf50;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .actions a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            margin: 0 5px;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .actions a:hover {
+            color: #0056b3;
+            transform: scale(1.1);
+        }
+
+        .home-link {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .home-link:hover {
+            background-color: #388e3c;
+            transform: translateY(-3px);
         }
     </style>
 </head>
 <body>
 
-    <h2>Shop Table</h2>
+    <h2>Ration Shop Owners Details</h2>
 
     <table>
-        <tr>
-            <th>id</th>
-            <th>Shopname</th>
-            <th>Owner</th>
-            <th>Location</th>
-            <th>Address</th>
-            <th>Phoneno</th>
-            <th>Openingtime</th>
-            <th>Closingtime</th>
-            
-        </tr>
-        {% for i in x %}
-        <tr>
-            <td>{{ forloop.counter }}</td>
-            <td>{{ i.shopname }}</td>
-            <td>{{ i.owner }}</td>
-            <td>{{ i.location }}</td>
-            <td>{{ i.address }}</td>
-            <td>{{ i.phoneno }}</td>
-            <td>{{ i.openingtime }}</td>
-            <td>{{ i.closingtime }}</td>
-            <td class="actions">
-                <a href="/loginapp/shopedit/{{ i.id }}">edit</a> | 
-                <a href="/loginapp/shopdelete/{{ i.id }}">delete</a>
-            </td>
-        </tr>
-        {% endfor %}
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Shop Name</th>
+                <th>Owner</th>
+                <th>Location</th>
+                <th>Address</th>
+                <th>Phone No</th>
+                <th>Opening Time</th>
+                <th>Closing Time</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in x %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ i.shopname }}</td>
+                <td>{{ i.owner }}</td>
+                <td>{{ i.location }}</td>
+                <td>{{ i.address }}</td>
+                <td>{{ i.phoneno }}</td>
+                <td>{{ i.openingtime }}</td>
+                <td>{{ i.closingtime }}</td>
+                <td>{{ i.login_id.status }}</td>
+                <td class="actions">
+                    <a href="/app/shopaccept/{{ i.id }}">Accept</a> | 
+                    <a href="/app/shopreject/{{ i.id }}">Reject</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
+
+    <a href="/app/admindashboard/" class="home-link">Go to Home</a>
 
 </body>
 </html>

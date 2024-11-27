@@ -1,9 +1,21 @@
 from django import forms 
-from .models import Submit,complaint,helprequest,Supplycosubmit,Supplyconotification
-class Submitform(forms.ModelForm):
+from .models import *
+class Stockform(forms.ModelForm):
     class Meta:
-        model = Submit
-        fields = ["stock","quantity"]
+        model = Stock
+        fields = ["product","price","quantity"]
+
+class Supplycostockform(forms.ModelForm):
+    class Meta:
+        model = Supplycostock
+        fields = ["product","price","quantity"]
+
+class Shopstockbookingform(forms.ModelForm):
+    class Meta:
+        model = Shopstockbooking
+        fields = ["product","quantity","date","time","bookingstatus"]
+
+
 class complaintform(forms.ModelForm):
     class Meta:
         model = complaint
@@ -19,4 +31,19 @@ class Supplycosubmitform(forms.ModelForm):
 class Supplyconotifyform(forms.ModelForm):
     class Meta:
         model = Supplyconotification
-        fields = ["userid","notification","date"]
+        fields = ["userid","notification","date","time"]
+
+class Userregistrationform(forms.ModelForm):
+    class Meta:
+        model = Userprofile
+        fields=['name','phoneno']
+
+class shopform(forms.ModelForm):
+    class Meta:
+        model = Shop
+        fields=['shopname','owner','location','address','phoneno','openingtime','closingtime']
+        
+class Supplycoform(forms.ModelForm):
+    class Meta:
+        model = Supplyco
+        fields=['shopname','owner','location','address','phoneno','openingtime','closingtime']

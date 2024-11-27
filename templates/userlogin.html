@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rationzone Login</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #3b5998, #192f6a); /* Dark blue gradient */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .form-container {
+            background-color: #fff;
+            margin-top: 200px;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            width: 350px;
+            text-align: center;
+            position: relative;
+        }
+        .form-container img {
+            width: 80px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .form-container h2 {
+            font-size: 24px;
+            color: #3b5998;
+            margin-bottom: 20px;
+        }
+        .form-container p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .form-container label {
+            text-align: left;
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #444;
+        }
+        .form-container input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .form-container input:focus {
+            border-color: #3b5998;
+            box-shadow: 0 0 5px rgba(59, 89, 152, 0.5);
+        }
+        .form-container .password-container {
+            position: relative;
+        }
+        .form-container .toggle-password {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 18px;
+            color: #3b5998;
+        }
+        .form-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: #3b5998;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .form-container button:hover {
+            background-color: #2d4373;
+        }
+        .form-container .registration-links {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .form-container .registration-links a {
+            display: inline-block;
+            margin: 10px 5px;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .form-container .registration-links a.ration-shop {
+            background-color: #00a859; /* Green */
+            color: #fff;
+        }
+        .form-container .registration-links a.ration-shop:hover {
+            background-color: #02502e; /* Darker Green */
+        }
+        .form-container .registration-links a.supplyco {
+            background-color: #d633ff; /* Orange */
+            color: #fff;
+        }
+        .form-container .registration-links a.supplyco:hover {
+            background-color: #920f81; /* Darker Orange */
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <!-- Updated Icon -->
+        <img src="https://img.icons8.com/color/96/login-rounded-right.png" alt="Login Icon">
+        <h2>Welcome Back</h2>
+        <p>Please log in to access your account</p>
+        <form action="" method="post">
+            {% csrf_token %}
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" placeholder="Enter your username" required>
+            <label for="password">Password</label>
+            <div class="password-container">
+                <input type="password" name="password" id="password" placeholder="Enter your password" required>
+                <span class="toggle-password" onclick="togglePassword()">&#128065;</span>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <div class="registration-links">
+            <a href="/app/shopadd/" class="ration-shop">Ration Shop Registration</a>
+            <a href="/app/supplycoadd/" class="supplyco">Supplyco Registration</a>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword() {
+            const passwordField = document.getElementById('password');
+            const toggleIcon = document.querySelector('.toggle-password');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                toggleIcon.innerHTML = '&#128064;'; /* Change icon to open eye */
+            } else {
+                passwordField.type = 'password';
+                toggleIcon.innerHTML = '&#128065;'; /* Change icon to closed eye */
+            }
+        }
+    </script>
+</body>
+</html>

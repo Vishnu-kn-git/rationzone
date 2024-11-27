@@ -3,43 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>feedback</title>
+    <title>User Feedback</title>
     <style>
-    
-        table {
-            width: 50%;
-            border-collapse: collapse;
-            margin: 25px 0;
-            font-size: 18px;
-            text-align: left;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa; /* Light background */
+            color: #333;
         }
+
+        header {
+            background-color: #343a40; /* Dark header */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 4px solid #007BFF;
+        }
+
+        header h2 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        .action-button {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .action-button a {
+            text-decoration: none;
+            color: white;
+            background-color: #007BFF;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            font-size: 1em;
+            font-weight: bold;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .action-button a:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            font-size: 1em;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
         th, td {
-            padding: 12px;
+            padding: 15px;
+            text-align: left;
             border: 1px solid #ddd;
         }
+
         th {
+            background-color: #007BFF;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        tr:nth-child(even) {
             background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #eaf4ff;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: #ffffff;
+            text-align: center;
+            padding: 15px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 0.9em;
+            border-top: 4px solid #007BFF;
+        }
+
+        footer p {
+            margin: 0;
         }
     </style>
 </head>
 <body>
+    <header>
+        <h2>User Feedback</h2>
+    </header>
 
-    <h2>FEEDBACK</h2>
+    <div class="action-button">
+        <a href="/app/admindashboard/">Go to Admin Dashboard</a>
+    </div>
 
     <table>
-        <tr>
-            <th>si_number</th>
-            <th>user_id</th>
-            <th>description</th>
-        </tr>
-        {% for i in x %}
-        <tr>
-            <td>{{ forloop.counter }}</td>
-            <td>{{ i.userid }}</td>
-            <td>{{ i.description }}</td>
-        </tr>
-        {% endfor %}
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>User ID</th>
+                <th>Feedback</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in x %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ i.userid }}</td>
+                <td>{{ i.feedback }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
 
+    <footer>
+        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+    </footer>
 </body>
 </html>

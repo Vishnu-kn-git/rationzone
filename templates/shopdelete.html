@@ -42,7 +42,7 @@
 </head>
 <body>
     <div class="form-container">
-        <form action="/loginapp/shopdelete/{{ x.id }}" method="post">
+        <form action="/app/shopdelete/{{ x.id }}" method="post">
             {% csrf_token %}
             <h1>Are you sure you want to delete?</h1>
             <p>{{ x.shopname }}</p>

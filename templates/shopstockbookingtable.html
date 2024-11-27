@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Stock Booking Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(to bottom right, #74b9ff, #81ecec);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #2d3436;
+            text-align: center;
+        }
+
+        .actions a {
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 4px;
+            color: #fff;
+            margin: 0 5px;
+        }
+
+        .actions a:hover {
+            opacity: 0.8;
+        }
+
+        .edit-btn {
+            background-color: #0984e3;
+        }
+
+        .delete-btn {
+            background-color: #d63031;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+            width: 90%;
+            max-width: 1000px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 16px;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #74b9ff;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        tr:hover {
+            background-color: #dfe6e9;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            width: 90%;
+            max-width: 1000px;
+            margin: 10px 0;
+        }
+
+        .btn-container a {
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .btn-container .add-btn {
+            background-color: #00b894;
+        }
+
+        .btn-container .add-btn:hover {
+            background-color: #009874;
+        }
+
+        .btn-container .dashboard-btn {
+            background-color: #6c5ce7;
+        }
+
+        .btn-container .dashboard-btn:hover {
+            background-color: #4834d4;
+        }
+    </style>
+</head>
+<body>
+    <h2>Shop Stock Booking Table</h2>
+
+    <div class="btn-container">
+        <a href="/app/shopdashboard/" class="dashboard-btn">Back to Home</a>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Bookingstatus</th>
+                <th>Actions</th>
+            </tr>
+            {% for i in x %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ i.product }}</td>
+                <td>{{ i.quantity }}</td>
+                <td>{{ i.date }}</td>
+                <td>{{ i.time }}</td>
+                <td>{{ i.bookingstatus}}</td>
+                <td class="actions">
+                    <a href="/app/shopstockbookingedit/{{ i.id }}" class="edit-btn">Update</a>
+                    <a href="/app/shopstockbookingdelete/{{ i.id }}" class="delete-btn">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SupplyCo Registration</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad390); /* Gradient background */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            animation: gradient-bg 10s infinite alternate; /* Subtle animation for the gradient */
+        }
+
+        @keyframes gradient-bg {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        form {
+            background: #fff; /* Clean white for form */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            max-width: 90%;
+            text-align: center;
+            position: relative;
+        }
+
+        h2 {
+            color: #ff6b6b; /* Vibrant red for title */
+            margin-bottom: 20px;
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        label {
+            display: block;
+            font-size: 1em;
+            color: #555;
+            text-align: left;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            box-sizing: border-box;
+            transition: all 0.3s ease-in-out;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #6c5ce7; /* Purple focus border */
+            box-shadow: 0 0 8px rgba(108, 92, 231, 0.5);
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 1.1em;
+            background: linear-gradient(135deg, #f093fb, #f5576c); /* Gradient button */
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #f5576c, #f093fb); /* Reverse gradient on hover */
+            transform: scale(1.02);
+        }
+
+        .form-footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        .form-footer a {
+            color: #ff6b6b;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .form-footer a:hover {
+            color: #6c5ce7; /* Purple hover for link */
+        }
+
+        /* Decorative bubble elements */
+        .bubble {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #ff6b6b, #f093fb); /* Colorful bubbles */
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: float 6s infinite ease-in-out alternate;
+        }
+
+        .bubble:nth-child(1) {
+            top: -50px;
+            left: -50px;
+            animation-delay: 0s;
+        }
+
+        .bubble:nth-child(2) {
+            top: -70px;
+            right: -70px;
+            animation-delay: 2s;
+        }
+
+        .bubble:nth-child(3) {
+            bottom: -50px;
+            left: 20px;
+            animation-delay: 4s;
+        }
+
+        .bubble:nth-child(4) {
+            bottom: -50px;
+            right: -40px;
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+            from {
+                transform: translateY(0) rotate(0deg);
+            }
+            to {
+                transform: translateY(-20px) rotate(360deg);
+            }
+        }
+
+        /* Responsive Design for Smaller Screens */
+        @media (max-width: 768px) {
+            form {
+                width: 100%;
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .bubble {
+                display: none; /* Hide bubbles on small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <form action="/app/supplycoadd/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2>SupplyCo Registration</h2>
+
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+        <label for="shopname">Shop Name</label>
+        <input type="text" id="shopname" name="shopname" placeholder="Enter your shop name" required>
+
+        <label for="owner">Owner</label>
+        <input type="text" id="owner" name="owner" placeholder="Enter owner's name" required>
+
+        <label for="location">Location</label>
+        <input type="text" id="location" name="location" placeholder="Enter the location" required>
+
+        <label for="address">Address</label>
+        <input type="text" id="address" name="address" placeholder="Enter the address" required>
+
+        <label for="phoneno">Phone Number</label>
+        <input type="text" id="phoneno" name="phoneno" placeholder="Enter the phone number" required>
+
+        <label for="openingtime">Opening Time:</label>
+        <input type="text" id="openingtime" name="openingtime" placeholder="e.g., 8:00 AM" required>
+
+        <label for="closingtime">Closing Time:</label>
+        <input type="text" id="closingtime" name="closingtime" placeholder="e.g., 8:00 PM" required>
+
+        <button type="submit">Register</button>
+
+        <div class="form-footer">
+
+            Already have an account? <a href="/app/userlogin/">Login here</a>
+
+        </div>
+    </form>
+</body>
+</html>

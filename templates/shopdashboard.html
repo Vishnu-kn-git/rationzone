@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rationshop Dashboard</title>
+    <style>
+        /* Resetting body and margins */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f9; /* Light gray background */
+        }
+
+        /* Sidebar styling */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #2c3e50; /* Dark sidebar background */
+            position: fixed;
+            padding-top: 20px;
+            color: #ecf0f1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar h1 {
+            font-size: 1.6em;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #3498db; /* Accent color for heading */
+        }
+
+        .sidebar a {
+            color: #ecf0f1;
+            text-decoration: none;
+            padding: 12px 20px;
+            text-align: left;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease, padding-left 0.3s ease;
+            border-bottom: 1px solid #34495e;
+        }
+
+        .sidebar a:hover {
+            background-color: #2980b9;
+            padding-left: 25px; /* Slight left padding on hover */
+        }
+
+        /* Logout button styling */
+        .sidebar .logout {
+            background-color: #e74c3c;
+            color: #fff;
+            padding: 12px 20px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 1.1em;
+            border-top: 1px solid #34495e;
+            margin-top: auto; /* Moves the logout button to the bottom */
+        }
+
+        .sidebar .logout:hover {
+            background-color: #c0392b; /* Darker red on hover */
+        }
+
+        /* Main content area styling */
+        .content {
+            margin-left: 250px;
+            padding: 40px;
+        }
+
+        .content h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .content p {
+            font-size: 1.2em;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .content .nav-buttons {
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 50px;
+        }
+
+        .content .nav-buttons a {
+            background-color: #3498db;
+            color: #fff;
+            padding: 20px 40px;
+            text-decoration: none;
+            font-size: 1.2em;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .content .nav-buttons a:hover {
+            background-color: #2980b9;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #34495e;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 15px;
+            font-size: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 200px;
+            }
+
+            .content {
+                margin-left: 200px;
+            }
+
+            .content .nav-buttons a {
+                font-size: 1em;
+                padding: 15px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <h1>Rationshop</h1>
+        <a href="/app/stocktable/">Stock</a>
+        <a href="/app/shopstockbookingtable/">Booking</a>
+        <a href="/app/shopusertable/">Users</a>
+        <a href="/app/userlogin/">Logout</a>
+        <div class="logout">Logout</div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="content">
+        <h2>Welcome to the Rationshop Dashboard</h2>
+        <p>Here, you can manage your stock, track delivery statuses, view and manage bookings, and control user access to the portal. Use the navigation links on the sidebar to access various sections of the system.</p>
+
+        <!-- Navigation Buttons -->
+        <div class="nav-buttons">
+            <a href="/app/stocktable/">Go to Stock</a>
+            <a href="/app/shopusertable/">View Users</a>
+            <a href="/app/shopstockbookingtable/">Manage Bookings</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Rationshop Portal. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #74ebd5, #9face6); /* Soft gradient background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        form h2 {
+            margin-bottom: 20px;
+            color: #007BFF;
+        }
+
+        label {
+            font-size: 1.1em;
+            color: #555;
+            display: block;
+            margin-bottom: 8px;
+            text-align: left;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #007BFF;
+        }
+
+        button {
+            width: 100%;
+            background-color: #007BFF;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .back-link {
+            margin-top: 20px;
+            display: inline-block;
+            font-size: 1em;
+            text-decoration: none;
+            color: #007BFF;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <form action="/app/supplycostockadd/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2>Add Stock</h2>
+        <label for="product">Product Name</label>
+        <input type="text" id="product" name="product" placeholder="Enter product name" required>
+        
+        <label for="price">Price</label>
+        <input type="text" id="price" name="price" placeholder="Enter price (in ₹)" required>
+        
+        <label for="quantity">Quantity</label>
+        <input type="text" id="quantity" name="quantity" placeholder="Enter quantity (Kg/L)" required>
+        
+        <button type="submit">Add Stock</button>
+        <a href="/app/supplycostocktable/" class="back-link">Back to Stock</a>
+    </form>
+</body>
+</html>

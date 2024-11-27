@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>notification Form</title>
+    <title>Notification Form</title>
     <style>
+        /* General Styling */
         body {
             font-family: Arial, sans-serif;
-            background: url('https://t4.ftcdn.net/jpg/02/16/47/35/360_F_216473592_NefHePTpMfvYMNjD3UQTUVJy7DFPwqKA.jpg') no-repeat center center fixed;
             background-size: cover;
             color: #333;
             display: flex;
@@ -16,25 +16,35 @@
         }
 
         form {
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            margin-top: 200px;
+            padding: 25px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
             text-align: center;
+            width: 350px;
         }
 
         label {
             font-size: 1.2em;
             color: #333;
+            display: block;
+            margin-top: 15px;
         }
 
         input[type="text"] {
-            width: 100%;
+            width: calc(100% - 20px);
             padding: 10px;
             margin: 10px 0;
             border: 2px solid #007BFF;
             border-radius: 5px;
             font-size: 1em;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #06b300;
         }
 
         button {
@@ -43,13 +53,36 @@
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
-            font-size: 1.2em;
+            font-size: 1.1em;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 20px;
         }
 
         button:hover {
             background-color: #06b300;
+            transform: scale(1.05);
+        }
+
+        /* Navigation Button Styling */
+        .navigation {
+            margin-top: 20px;
+        }
+
+        .navigation a {
+            text-decoration: none;
+            font-size: 1em;
+            color: #ffffff;
+            background-color: #e67e22;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+            display: inline-block;
+        }
+
+        .navigation a:hover {
+            background-color: #d35400;
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -62,7 +95,12 @@
         <input type="text" id="notification" name="notification" required>
         <label for="date">Date:</label>
         <input type="text" id="date" name="date" required>
+        <label for="time">Time:</label>
+        <input type="text" id="time" name="time" required>
         <button type="submit">Submit</button>
+        <div class="navigation">
+            <a href="/app/supplyconotify/">Go to Notification Table</a>
+        </div>
     </form>
 </body>
 </html>

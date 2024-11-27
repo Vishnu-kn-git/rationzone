@@ -3,48 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>complaint</title>
+    <title>Complaints</title>
     <style>
-    
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        h2 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-size: 24px;
+            font-weight: bold;
+        }
         table {
-            width: 50%;
+            width: 80%;
             border-collapse: collapse;
-            margin: 25px 0;
-            font-size: 18px;
+            margin: 20px 0;
+            font-size: 16px;
             text-align: left;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
         th, td {
-            padding: 12px;
+            padding: 12px 15px;
             border: 1px solid #ddd;
         }
         th {
-            background-color: #f2f2f2;
+            background-color: #f4f4f4;
+            color: #555;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .actions a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+        }
+        .actions a:hover {
+            color: #0056b3;
+        }
+        .home-link {
+            margin-top: 20px;
+            text-decoration: none;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #4CAF50;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .home-link:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
 
-    <h2>COMPLAINTS</h2>
+    <h2>Complaints</h2>
 
     <table>
         <tr>
-            <th>si_number</th>
-            <th>user_id</th>
-            <th>description</th>
-            <th>reply</th>
+            <th>ID</th>
+            <th>User ID</th>
+            <th>Complaint</th>
+            <th>Date</th>
+            <th>Reply</th>
+            <th>Actions</th>
         </tr>
         {% for i in x %}
         <tr>
             <td>{{ forloop.counter }}</td>
             <td>{{ i.userid }}</td>
-            <td>{{ i.description }}</td>
+            <td>{{ i.complaint }}</td>
+            <td>{{ i.date }}</td>
             <td>{{ i.reply }}</td>
             <td class="actions">
-                <a href="/app/complaintedit/{{ i.id }}">edit</a> | 
+                <a href="/app/complaintedit/{{ i.id }}">Reply</a>
             </td>
         </tr>
         {% endfor %}
     </table>
+
+    <a href="/app/admindashboard" class="home-link">Back to Dashboard</a>
 
 </body>
 </html>

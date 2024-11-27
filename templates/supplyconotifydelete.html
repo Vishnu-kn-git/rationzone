@@ -3,51 +3,88 @@
 <head>
     <title>Delete Confirmation</title>
     <style>
+        /* General Styling */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: url('https://www.shutterstock.com/image-vector/online-shopping-digital-technology-icon-600nw-2217607781.jpg') no-repeat center center fixed;
             background-size: cover;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-        }
-        .form-container {
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            text-align: center;
-        }
-        h1 {
             color: #333;
+        }
+
+        .form-container {
+            background-color: rgba(250, 242, 242, 0.95);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 350px;
+        }
+
+        h1 {
+            color: #e74c3c;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #555;
             margin-bottom: 20px;
         }
+
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        input[type="submit"],
+        a.cancel-btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            text-decoration: none;
+            color: white;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
         input[type="submit"] {
             background-color: #e74c3c;
-            color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
             cursor: pointer;
-            margin-top: 20px;
         }
+
         input[type="submit"]:hover {
-            background-color: #00f535;
+            background-color: #c0392b;
+            transform: scale(1.05);
+        }
+
+        a.cancel-btn {
+            background-color: #3498db;
+            display: inline-block;
+        }
+
+        a.cancel-btn:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
         }
     </style>
 </head>
 <body>
     <div class="form-container">
-        <form action="/app/supplyconotifydelete/{{ x.id }}" method="post">
-            {% csrf_token %}
-            <h1>Are you sure you want to delete?</h1>
-            <p>{{ x.userid }}</p>
-            <input type="submit" value="Delete">
-        </form>
+        <h1>Confirm Delete</h1>
+        <p>Are you sure you want to delete the notification for <strong>{{ x.userid }}</strong>?</p>
+        <div class="btn-container">
+            <form action="/app/supplyconotifydelete/{{ x.id }}" method="post" style="margin: 0;">
+                {% csrf_token %}
+                <input type="submit" value="Delete">
+            </form>
+            <a href="/app/supplyconotify/" class="cancel-btn">Cancel</a>
+        </div>
     </div>
 </body>
 </html>

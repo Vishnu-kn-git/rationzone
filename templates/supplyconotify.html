@@ -5,20 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notification Table</title>
     <style>
-    
-        table {
-            width: 50%;
-            border-collapse: collapse;
-            margin: 25px 0;
-            font-size: 18px;
-            text-align: left;
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f7fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
         }
+
+        h2 {
+            margin-top: 20px;
+            color: #34495e;
+            font-size: 2em;
+        }
+
+        /* Table Styling */
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            text-align: left;
+            background: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
         th, td {
             padding: 12px;
             border: 1px solid #ddd;
         }
+
         th {
+            background-color: #2c3e50;
+            color: #ffffff;
+        }
+
+        tr:nth-child(even) {
             background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #dff9fb;
+        }
+
+        /* Action Links Styling */
+        .actions a {
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .actions a:hover {
+            opacity: 0.9;
+        }
+
+        .actions a:nth-child(1) {
+            background-color: #27ae60;
+            color: #ffffff;
+        }
+
+        .actions a:nth-child(2) {
+            background-color: #e74c3c;
+            color: #ffffff;
+        }
+
+        /* Buttons for Add Notification and Home */
+        .buttons-container {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .buttons-container a {
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            color: #ffffff;
+            background-color: #3498db;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .buttons-container a:hover {
+            background-color: #2980b9;
+        }
+
+        .buttons-container a:nth-child(2) {
+            background-color: #8e44ad;
+        }
+
+        .buttons-container a:nth-child(2):hover {
+            background-color: #732d91;
         }
     </style>
 </head>
@@ -26,12 +110,21 @@
 
     <h2>Notification Table</h2>
 
+    <!-- Add Notification and Home Buttons -->
+    <div class="buttons-container">
+        <a href="/app/supplyconotifyapp/">Add Notification</a>
+        <a href="/app/supplycodashboard/">Go to Home</a>
+    </div>
+
+    <!-- Notification Table -->
     <table>
         <tr>
             <th>id</th>
             <th>userid</th>
             <th>notification</th>
             <th>date</th>
+            <th>time</th>
+            <th>Actions</th>
         </tr>
         {% for i in x %}
         <tr>
@@ -39,9 +132,10 @@
             <td>{{ i.userid }}</td>
             <td>{{ i.notification }}</td>
             <td>{{ i.date }}</td>
+            <td>{{ i.time }}</td>
             <td class="actions">
-                <a href="/app/supplyconotifyedit/{{ i.id }}">edit</a> | 
-                <a href="/app/supplyconotifydelete/{{ i.id }}">delete</a>
+                <a href="/app/supplyconotifyedit/{{ i.id }}">Update</a>
+                <a href="/app/supplyconotifydelete/{{ i.id }}">Delete</a>
             </td>
         </tr>
         {% endfor %}

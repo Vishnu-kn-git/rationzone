@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Table</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9fafc;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #007BFF, #0056b3);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 4px solid #0056b3;
+        }
+
+        header h2 {
+            margin: 0;
+            font-size: 2.2em;
+        }
+
+        .action-buttons {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .action-buttons a {
+            text-decoration: none;
+            color: white;
+            background-color: #007BFF;
+            padding: 10px 25px;
+            margin: 10px;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, background-color 0.3s ease;
+        }
+
+        .action-buttons a:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        table {
+            width: 90%;
+            border-collapse: collapse;
+            margin: 30px auto;
+            font-size: 1em;
+            background-color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+            font-size: 1em;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f4f7fc;
+        }
+
+        tr:hover {
+            background-color: #e3f1ff;
+            transition: background-color 0.3s ease;
+        }
+
+        td {
+            font-size: 0.95em;
+        }
+
+        .actions a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+            padding: 5px 10px;
+            border: 1px solid #007BFF;
+            border-radius: 5px;
+            transition: color 0.3s, background-color 0.3s;
+        }
+
+        .actions a:hover {
+            color: white;
+            background-color: #0056b3;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #0056b3, #007BFF);
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 0.9em;
+            border-top: 4px solid #0056b3;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            table {
+                font-size: 0.9em;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+
+            .action-buttons a {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>Supplyco Product Stock</h2>
+    </header>
+
+    <div class="action-buttons">
+        <a href="/app/supplycostockadd/">Add Stock</a>
+        <a href="/app/supplycodashboard/">Go to Home</a>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity (Kg/L)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in x %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ i.product }}</td>
+                <td>{{ i.price }}</td>
+                <td>{{ i.quantity }}</td>
+                <td class="actions">
+                    <a href="/app/supplycostockedit/{{ i.id }}">Update</a>
+                    <a href="/app/supplycostockdelete/{{ i.id }}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <footer>
+        <p>&copy; 2024 Supplyco Portal. All rights reserved.</p>
+    </footer>
+</body>
+</html>

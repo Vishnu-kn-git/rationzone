@@ -44,7 +44,7 @@
 </head>
 <body>
     <div class="form-container">
-        <form action="/loginapp/shopedit/{{ x.id }}" method="post">
+        <form action="/app/shopedit/{{ x.id }}" method="post">
             {% csrf_token %}
             <input type="text" value="{{ x.shopname }}" name="shopname">
             <input type="text" value="{{ x.owner }}" name="owner">

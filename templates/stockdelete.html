@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Confirmation</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #ff6b6b, #f8f9fa);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .form-container h1 {
+            color: #e74c3c;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container h1 i {
+            font-size: 2.5rem;
+            margin-right: 10px;
+        }
+
+        .form-container p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .buttons input[type="submit"], .buttons a {
+            flex: 1;
+            text-align: center;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        input[type="submit"] {
+            background-color: #e74c3c;
+            color: #fff;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #c0392b;
+        }
+
+        a {
+            text-decoration: none;
+            background-color: #3498db;
+            color: #fff;
+            display: inline-block;
+            line-height: 1.6em;
+        }
+
+        a:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>
+            <i class="fas fa-trash-alt"></i> Delete Confirmation
+        </h1>
+        <p>Are you sure you want to delete <strong>{{ x.product }}</strong>?</p>
+        <div class="buttons">
+            <form action="/app/stockdelete/{{ x.id }}" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Delete">
+            </form>
+            <a href="/app/stocktable/">Cancel</a>
+        </div>
+    </div>
+</body>
+</html>

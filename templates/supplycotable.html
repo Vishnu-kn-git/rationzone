@@ -3,47 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stock Table</title>
+    <title>Shop Table</title>
     <style>
-    
+        body {
+            font-family: 'Verdana', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #88d8b0, #f2dc85);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #2c5f2d;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
         table {
-            width: 50%;
+            width: 85%;
+            max-width: 1100px;
             border-collapse: collapse;
             margin: 25px 0;
-            font-size: 18px;
-            text-align: left;
+            font-size: 16px;
+            background-color: #fff;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            overflow: hidden;
         }
+
         th, td {
-            padding: 12px;
+            padding: 14px 18px;
             border: 1px solid #ddd;
+            text-align: center;
         }
+
         th {
-            background-color: #f2f2f2;
+            background-color: #2c5f2d;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .actions a {
+            text-decoration: none;
+            color: #8b5e34;
+            font-weight: bold;
+            margin: 0 5px;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .actions a:hover {
+            color: #5a2a08;
+            transform: scale(1.1);
+        }
+
+        .home-link {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            background-color: #2c5f2d;
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .home-link:hover {
+            background-color: #245024;
+            transform: translateY(-3px);
         }
     </style>
 </head>
 <body>
 
-    <h2>Stock Table</h2>
+    <h2>Supplyco Owner Details</h2>
 
     <table>
-        <tr>
-            <th>Stock</th>
-            <th>Stock Type</th>
-            <th>Quantity (Kg/L)</th>
-        </tr>
-        {% for i in x %}
-        <tr>
-            <td>{{ forloop.counter }}</td>
-            <td>{{ i.stock }}</td>
-            <td>{{ i.quantity }}</td>
-            <td class="actions">
-                <a href="/app/supplycotableedit/{{ i.id }}">edit</a> | 
-                <a href="/app/supplycotabledelete/{{ i.id }}">delete</a>
-            </td>
-        </tr>
-        {% endfor %}
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Shop Name</th>
+                <th>Owner</th>
+                <th>Location</th>
+                <th>Address</th>
+                <th>Phone No</th>
+                <th>Opening Time</th>
+                <th>Closing Time</th>
+                <td>Status</td>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in x %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ i.shopname }}</td>
+                <td>{{ i.owner }}</td>
+                <td>{{ i.location }}</td>
+                <td>{{ i.address }}</td>
+                <td>{{ i.phoneno }}</td>
+                <td>{{ i.openingtime }}</td>
+                <td>{{ i.closingtime }}</td>
+                <td>{{ i.login_id.status}}</td>
+                <td class="actions">
+                    <a href="/app/supplycoaccept/{{ i.id }}"> Accept</a> | 
+                    <a href="/app/supplycoreject/{{ i.id }}">Reject</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
+
+    <a href="/app/admindashboard/" class="home-link">Go to Home</a>
 
 </body>
 </html>
